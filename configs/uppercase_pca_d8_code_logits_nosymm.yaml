@@ -1,0 +1,48 @@
+run_name: uppercase_pca_d8_code_logits_nosymm
+output_root: runs
+device: cuda
+seed: 0
+
+v3_root: ../variance-versus-invariance
+v3_config: ../variance-versus-invariance/logs/uppercase_letters_run2_batch32_resume/config.yaml
+v3_checkpoint: ../variance-versus-invariance/logs/uppercase_letters_run2_batch32_resume/cp_epoch304.pt
+
+letter_train_dir: ../data/UppercaseLetters/train
+letter_eval_dir: ../data/UppercaseLetters/test
+train_ratio: 0.3
+split_seed: 0
+number_min: 0
+number_max: 20
+fragment_len: 32
+
+batch_size: 128
+num_workers: 0
+train_input_mode: image
+max_steps: 20000
+eval_interval: 200
+learning_rate: 0.0001
+weight_decay: 0.0
+save_top_k: 1
+
+content_dim: 512
+plus_hidden_dim: 1024
+plus_hidden_layers: 2
+
+operation_space: pca
+operation_dim: 8
+prediction_mode: code_logits
+projector_fit_max_pages: 512
+projector_hidden_dim: 1024
+projector_hidden_layers: 1
+projector_recon_loss_weight: 0.0
+
+use_symmetry: false
+plus_loss_weight: 0.0
+target_vq_ce_loss_weight: 1.0
+target_vq_ce_temperature: 1.0
+symmetry_loss_weight: 0.0
+pred_commit_loss_weight: 0.0
+
+mapping_max_pages: 512
+eval_batch_size: 128
+vis_num_examples: 8

@@ -4,3 +4,10 @@ __pycache__/
 .venv/
 .DS_Store
 .vscode/
+
+# Experiment artifacts live outside git history.
+runs/
+*.pt
+*.pth
+*.ckpt
+*.log

@@ -181,12 +181,13 @@ class AdditionTripletDataset(Dataset):
             page_paths.append(str(path))
         images = torch.stack(fragments, dim=0)
         numbers = torch.tensor(triplet, dtype=torch.long)
-        return {
+        item = {
             "images": images,
             "numbers": numbers,
             "styles": style_names,
             "page_paths": page_paths,
         }
+        return item
 
 
 def make_triplet_loader(
@@ -221,4 +222,3 @@ def iter_batches_forever(loader: DataLoader) -> Iterable[dict]:
     while True:
         for batch in loader:
             yield batch
-
